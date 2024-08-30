@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myunitygame"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Специфікація версії SDK -->
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="33" />
+
+    <!-- Права доступу, які можуть знадобитися грі -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        tools:replace="android:label">
+
+        <!-- Unity Player Activity -->
+        <activity android:name="com.unity3d.player.UnityPlayerActivity"
+            android:label="@string/app_name"
+            android:theme="@style/UnityThemeSelector"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:launchMode="singleTask"
+            android:screenOrientation="sensorLandscape"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Appsflyer Configuration -->
+        <meta-data android:name="com.appsflyer.sdk.AppsFlyerKey"
+            android:value="ytPuQc6oHMvGHLh83FVpdd" />
+        <receiver android:name="com.appsflyer.MultipleInstallBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- OneSignal Configuration -->
+        <meta-data android:name="onesignal_app_id"
+            android:value="635c5f12-bb1c-4e8a-92a5-65636c604328" />
+        <meta-data android:name="onesignal_google_project_number"
+            android:value="REMOTE" />
+        
+        <!-- Optional: Configuration for AdMob or other services -->
+        <!-- <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="your-admob-app-id" /> -->
+
+    </application>
+
+</manifest>
